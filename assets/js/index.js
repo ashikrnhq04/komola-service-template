@@ -5,42 +5,62 @@
  */
 function deadLinkHandler() {
   const deadLink = document.querySelectorAll("a[href='#']");
-  const deadFormSubmit = document.querySelectorAll("form[action='#'] button");
-
+  const falsFormSubmit = document.querySelectorAll(
+    "form[action='#'] button[type='submit']"
+  );
+  if (!deadLink) {
+    return;
+  }
   function disableEvent(event) {
     event.preventDefault();
   }
   deadLink.forEach((link) => {
     link.addEventListener("click", disableEvent);
   });
-  deadFormSubmit.forEach((btn) => {
+  if (!falsFormSubmit) {
+    return;
+  }
+  falsFormSubmit.forEach((btn) => {
     btn.addEventListener("click", disableEvent);
   });
 }
 deadLinkHandler();
 
 /**
- * scroll to top element handler
+ * scroll to top  handler
  */
-const scrollTop = document.querySelector(".totop");
-function scrollToTop(elem) {
-  let hero = document.getElementById("hero");
-  if (document.documentElement.scrollTop > hero.offsetHeight) {
-    elem.style.right = "20px";
-  } else {
-    elem.style.right = "-300px";
+{
+  const scrollTop = document.querySelector(".totop");
+  function scrollToTop(elem) {
+    if (!elem) {
+      return;
+    }
+    let hero = document.getElementById("hero");
+    if (document.documentElement.scrollTop > hero.offsetHeight) {
+      elem.style.right = "20px";
+    } else {
+      elem.style.right = "-300px";
+    }
   }
+  window.addEventListener("scroll", () => {
+    scrollToTop(scrollTop);
+  });
 }
-window.addEventListener("scroll", () => {
-  scrollToTop(scrollTop);
-});
 
 /**
  * video modal enable
  */
-var videoModal = document.getElementById("myModal");
-var videoOpen = document.getElementById("watchVideo");
+{
+  let videoModal = document.getElementById("myModal");
+  let videoOpen = document.getElementById("watchVideo");
 
-videoModal.addEventListener("shown.bs.modal", function () {
-  videoOpen.focus();
-});
+  videoModal.addEventListener("shown.bs.modal", function () {
+    videoOpen.focus();
+  });
+  function stopVideo() {
+    let iframeSrc = videoModal.querySelector("iframe").src;
+    videoModal.querySelector("iframe").src = "";
+    videoModal.querySelector("iframe").src = iframeSrc;
+  }
+  videoModal.addEventListener("hidden.bs.modal", stopVideo);
+}
