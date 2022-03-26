@@ -1,5 +1,8 @@
 "use strict";
 
+/**
+ * disable dead link event
+ */
 function deadLinkHandler() {
   const deadLink = document.querySelectorAll("a[href='#']");
   const deadFormSubmit = document.querySelectorAll("form[action='#'] button");
@@ -16,6 +19,9 @@ function deadLinkHandler() {
 }
 deadLinkHandler();
 
+/**
+ * scroll to top element handler
+ */
 const scrollTop = document.querySelector(".totop");
 function scrollToTop(elem) {
   let hero = document.getElementById("hero");
@@ -27,4 +33,14 @@ function scrollToTop(elem) {
 }
 window.addEventListener("scroll", () => {
   scrollToTop(scrollTop);
+});
+
+/**
+ * video modal enable
+ */
+var videoModal = document.getElementById("myModal");
+var videoOpen = document.getElementById("watchVideo");
+
+videoModal.addEventListener("shown.bs.modal", function () {
+  videoOpen.focus();
 });
