@@ -1,0 +1,8 @@
+footer {
+  padding-top: 30px;
+  background: $defaultColor;
+  .credit {
+    margin-top: 30px;
+    background: lighten($defaultColor, 5%);
+  }
+}

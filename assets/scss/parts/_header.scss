@@ -1,0 +1,17 @@
+header {
+  .navbar {
+    .navbar-nav {
+      .nav-link {
+        color: $defaultColor;
+        @include border-radius(5px);
+        @include transition(300);
+        margin: 0px 5px;
+        &:hover {
+          color: #fff;
+          background: $orange;
+          @include transition(300);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,163 @@
+/*
+* sass variables
+*/
+
+/* fonts */
+$opensans: "Open Sans", sans-serif;
+
+@mixin fontweight($val) {
+  font-weight: $val;
+}
+
+/* colors */
+$orange: #ed4f2e;
+$defaultColor: #1f2c33;
+
+/* mixins */
+@mixin displayFlex($align, $justify) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+}
+@mixin opacity($val) {
+  opacity: $val;
+}
+@mixin border-radius($val) {
+  border-radius: $val;
+  -webkit-border-radius: $val;
+  -moz-border-radius: $val;
+  -ms-border-radius: $val;
+  -o-border-radius: $val;
+}
+
+@mixin translateX($val) {
+  transform: translateX($val + px);
+  -webkit-transform: translateX($val + px);
+  -moz-transform: translateX($val + px);
+  -ms-transform: translateX($val + px);
+  -o-transform: translateX($val + px);
+}
+@mixin scale($val) {
+  transform: scale($val);
+  -webkit-transform: scale($val);
+  -moz-transform: scale($val);
+  -ms-transform: scale($val);
+  -o-transform: scale($val);
+}
+@mixin rotate($val) {
+  transform: rotate($val + deg);
+  -webkit-transform: rotate($val + deg);
+  -moz-transform: rotate($val + deg);
+  -ms-transform: rotate($val + deg);
+  -o-transform: rotate($val + deg);
+}
+@mixin rotateX($val) {
+  transform: rotateX($val + deg);
+  -webkit-transform: rotateX($val + deg);
+  -moz-transform: rotateX($val + deg);
+  -ms-transform: rotateX($val + deg);
+  -o-transform: rotateX($val + deg);
+}
+
+@mixin rotateY($val) {
+  transform: rotateY($val + deg);
+  -webkit-transform: rotateY($val + deg);
+  -moz-transform: rotateY($val + deg);
+  -ms-transform: rotateY($val + deg);
+  -o-transform: rotateY($val + deg);
+}
+@mixin transition($val) {
+  transition: all $val + ms;
+  -webkit-transition: all $val + ms;
+  -moz-transition: all $val + ms;
+  -ms-transition: all $val + ms;
+  -o-transition: all $val + ms;
+}
+@mixin mediaQuery($val) {
+  // Small devices (landscape phones, 576px and up)
+  @if $val == small {
+    @media (max-width: 576px) {
+      @content;
+    }
+  }
+  // Medium devices (tablets, 768px and up)
+  @else if $val == medium {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+  // Large devices (desktops, 992px and up)
+  @else if $val == large {
+    @media (min-width: 992px) {
+      @content;
+    }
+  }
+}
+
+body {
+  background: #ebebeb;
+  font: {
+    size: 14px;
+    family: $opensans;
+    @include fontweight(400);
+  }
+  color: $defaultColor;
+}
+.section__wrapper {
+  margin: 50px 0px;
+  @include border-radius(20px 20px 0px 0px);
+  padding: 20px 50px;
+  padding-bottom: 60px;
+  background: #fff;
+  @include mediaQuery(small) {
+    padding: 20px;
+  }
+  .section__title {
+    margin: 50px 0px;
+    padding: 20px;
+    h2 {
+      font-size: 35px;
+    }
+  }
+  .content__wrapper {
+    margin: 50px 20px;
+  }
+}
+.text--orange {
+  color: $orange;
+}
+.btn--orange {
+  background: $orange;
+  color: #fff;
+  &:hover {
+    color: #fff;
+  }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font: {
+    family: $opensans;
+  }
+  @include fontweight(500);
+}
+.totop {
+  position: fixed;
+  bottom: 50px;
+  padding: 15px 20px;
+  background: #fff;
+  color: $defaultColor;
+  z-index: 300;
+  @include opacity(0.6);
+  @include transition(300);
+  &:hover {
+    background: $orange;
+    color: #fff;
+    @include opacity(1);
+    @include transition(300);
+  }
+}
+@import "./parts/main";

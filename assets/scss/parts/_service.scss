@@ -1,0 +1,19 @@
+#service {
+  .article {
+    &:hover {
+      .icon {
+        color: $orange;
+        @include transition(300);
+      }
+      h4 {
+        color: $orange;
+        @include transition(300);
+      }
+    }
+    h4 {
+      margin: 20px;
+      font-size: 25px;
+      @include transition(300);
+    }
+  }
+}

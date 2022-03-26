@@ -1,0 +1,59 @@
+#pricing {
+  .price__single {
+    @include displayFlex(center, center);
+    .price__table {
+      border: 2px solid #ebebeb;
+      text-align: center;
+      padding-bottom: 30px;
+      margin: 20px 0px;
+      @include transition(300);
+      &:hover {
+        border-color: $orange;
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        -o-transform: scale(1.1);
+        .price__amount {
+          background: $orange;
+          color: #fff;
+          @include transition(300);
+        }
+        .btn {
+          color: #fff;
+        }
+      }
+      thead {
+        .price__plan--name {
+          font-size: 18px;
+          padding: 20px;
+        }
+        .price__amount {
+          font-size: 35px;
+          padding: 10px;
+          background: #ebebeb;
+          font-weight: 500;
+          @include transition(300);
+        }
+      }
+      tbody {
+        display: block;
+        margin: 30px 0px;
+        padding: 0px 20px;
+        font-size: 12px;
+        tr {
+          margin: 5px 0px;
+          display: block;
+          td {
+            display: block;
+            text-align: center;
+          }
+        }
+      }
+      tfoot {
+        @include displayFlex(center, center);
+        margin-bottom: 30px;
+      }
+    }
+  }
+}

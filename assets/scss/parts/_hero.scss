@@ -1,0 +1,25 @@
+#hero {
+  height: 100vh;
+  background-image: url("../../media/hero.png");
+  position: relative;
+  @include displayFlex(center, center);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  @include mediaQuery(small) {
+    height: 600px;
+  }
+  .background-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $orange;
+    @include opacity(0.7);
+    z-index: 100;
+  }
+  .content__wrapper {
+    position: relative;
+    z-index: 120;
+  }
+}
