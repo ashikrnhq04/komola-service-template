@@ -3,28 +3,31 @@
 /**
  * disable dead link event
  */
-function deadLinkHandler() {
-  const deadLink = document.querySelectorAll("a[href='#']");
-  const falsFormSubmit = document.querySelectorAll(
-    "form[action='#'] button[type='submit']"
-  );
-  if (!deadLink) {
-    return;
+{
+  function deadLinkHandler() {
+    const deadLink = document.querySelectorAll("a[href='#']");
+
+    const falsFormSubmit = document.querySelectorAll(
+      "form[action='#'] button[type='submit']"
+    );
+    if (!deadLink) {
+      return;
+    }
+    function disableEvent(event) {
+      event.preventDefault();
+    }
+    deadLink.forEach((link) => {
+      link.addEventListener("click", disableEvent);
+    });
+    if (!falsFormSubmit) {
+      return;
+    }
+    falsFormSubmit.forEach((btn) => {
+      btn.addEventListener("click", disableEvent);
+    });
   }
-  function disableEvent(event) {
-    event.preventDefault();
-  }
-  deadLink.forEach((link) => {
-    link.addEventListener("click", disableEvent);
-  });
-  if (!falsFormSubmit) {
-    return;
-  }
-  falsFormSubmit.forEach((btn) => {
-    btn.addEventListener("click", disableEvent);
-  });
+  deadLinkHandler();
 }
-deadLinkHandler();
 
 /**
  * scroll to top  handler
@@ -57,6 +60,9 @@ deadLinkHandler();
   videoModal.addEventListener("shown.bs.modal", function () {
     videoOpen.focus();
   });
+  /**
+   * stop video on closing modal
+   */
   function stopVideo() {
     let iframeSrc = videoModal.querySelector("iframe").src;
     videoModal.querySelector("iframe").src = "";
